@@ -1,0 +1,11 @@
+import torch
+import numpy as np
+from kaolin import render, ops, io, metrics
+from PIL import Image
+
+mesh = io.obj.import_mesh('file.obj', with_materials=True)
+vertices = mesh.vertices.unsqueeze(0).cuda()
+faces = mesh.faces.cuda()
+uvs = mesh.uvs.unsqueeze(0).cuda()
+face_uvs_idx = mesh.face_uvs_idx.cuda()
+texture_maps = mesh.materials[0]
